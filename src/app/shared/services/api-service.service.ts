@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 export class ApiServiceService {
 
   token = "e090c25187ee2b3f9f1f8a02747356641";
-  headers = new HttpHeaders({ 'content-type': 'application/json' });
   baseUrl = 'https://paysprint.in/service-api/testangular/api/TestAngular/';
 
   constructor(private http: HttpClient) {
@@ -23,5 +22,13 @@ export class ApiServiceService {
     let body = otpDetails;
     body.append('token', this.token);
     return this.http.post(`${this.baseUrl}verifyOtp`, body);
+  }
+
+  getData() {
+    let authToken = window.atob(window.localStorage.getItem("id"));
+    let body = new FormData();
+    body.append('token', this.token);
+    body.append('authToken', authToken);
+    return this.http.post(`${this.baseUrl}getDynamicform`, body);
   }
 }
