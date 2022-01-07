@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastService } from './shared/services/toast.service';
 
 @Component({
@@ -9,6 +10,12 @@ import { ToastService } from './shared/services/toast.service';
 export class AppComponent {
   title = 'rnfi';
 
-  constructor(){
+  constructor(
+    private router: Router
+  ){
+    if (window.localStorage.getItem("id")) {
+      this.router.navigateByUrl("/user");
+    }
+    else this.router.navigateByUrl("/login");
   }
 }

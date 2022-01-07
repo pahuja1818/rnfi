@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           if (this.user.twostep !== 1) {
             this.saveUserToken();
             this.toast.success("Logged in Successfully!");
-            this.router.navigateByUrl('/user');
+            window.location.reload();
           }
           else {
             this.isTwoStepVerification = true;
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         else {
           this.saveUserToken();
           this.toast.success("Logged in Successfully!");
-          this.router.navigateByUrl('/user');
+          window.location.reload();
         }
         this.isServiceRunning = false;
       },

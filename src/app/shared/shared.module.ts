@@ -7,7 +7,7 @@ import { ApiServiceService } from './services/api-service.service';
 import { ToastService } from './services/toast.service';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { BrowserModule } from '@angular/platform-browser';
+import { RouteGuard } from './auth-guard/auth-guard';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   providers: [
     ApiServiceService,
-    ToastService
+    ToastService,
+    RouteGuard,
   ]
 })
 export class SharedModule { }
