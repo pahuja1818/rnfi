@@ -42,9 +42,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 3.3rem !important;
 }
 
-.text-link {
-    cursor: pointer;
-}
 
 .text-semibold {
     font-weight: 300;
@@ -66,13 +63,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #9E6DF7;
 }
 
-a.text-link:hover, a.text-link:visited, a.text-link:active, a.text-link:link {
-    text-decoration: none;
-}
-
-.fredoka {
-    font-family: 'Fredoka One', cursive !important;
-}
 
 //z-index ----
 .overlay {
@@ -121,13 +111,6 @@ a.text-link:hover, a.text-link:visited, a.text-link:active, a.text-link:link {
   
   ::-webkit-scrollbar-thumb:hover {
     background-color: black;
-  }
-
-  .employee-modal{
-    min-width: 60% !important;
-    display: flex;
-    align-items: center;
-    height: 100%;
   }
 
   .login-logo {

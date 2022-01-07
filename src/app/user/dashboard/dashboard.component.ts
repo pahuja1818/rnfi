@@ -1,6 +1,7 @@
 import { ApiServiceService } from 'src/app/shared/services/api-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,18 +10,20 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
 
+  isServiceRunning = false;
+
   rnfi: any[] = [];
   pivotal: any[] = [];
   paysprint: any[] = [];
 
   constructor(
     private apiService: ApiServiceService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toast: ToastService
   ) {
     this.getData();
    }
 
-   orderForm: FormGroup;
    rnfiForm: FormGroup;
    pivotalForm: FormGroup;
    paysprintForm: FormGroup;
@@ -30,6 +33,7 @@ export class DashboardComponent implements OnInit {
  
  
    ngOnInit() {
+     //initializing forms
      this.rnfiForm = this.formBuilder.group({
       rnfiFormArray: this.formBuilder.array([])
     });
@@ -43,13 +47,11 @@ export class DashboardComponent implements OnInit {
     });
    }
 
-   createItem(dataObject: any): FormGroup {
+  createItem(dataObject: any): FormGroup {
     return this.formBuilder.group(dataObject);
   }
 
-  
-
-  addItem(): void {
+  creatingDynamicFormsData(): void {
     this.rnfi.forEach((data) => {
       this.rnfiFormArray = this.rnfiForm.get('rnfiFormArray') as FormArray;
       this.rnfiFormArray.push(this.createItem(data));
@@ -64,17 +66,20 @@ export class DashboardComponent implements OnInit {
       this.paysprintFormArray = this.paysprintForm.get('paysprintFormArray') as FormArray;
       this.paysprintFormArray.push(this.createItem(data));
     });
-    
   }
 
-  
-
   getData(){
+    this.isServiceRunning = true;
     this.apiService.getData().subscribe((data: any) => {
       this.rnfi = data.data[0].rnfi;
       this.pivotal = data.data[0].pivotal;
       this.paysprint = data.data[0].paysprint;
-      this.addItem();
+      this.creatingDynamicFormsData();
+    this.isServiceRunning = false;
+
+    },
+    (error) => {
+      this.toast.error("Something went wrong!");
     });
   }
 
