@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+<div class="p-4">
+
+    <h1 class="text-violet text-center p-3">DASHBOARD</h1>
+    <h2>RNFI</h2>
+    <form [formGroup]="rnfiForm">
+        <div formArrayName="rnfiFormArray"
+            *ngFor="let item of rnfiForm.get('rnfiFormArray')['controls']; let i = index;">
+            <div [formGroupName]="i" class="row my-5">
+                <div class="col-sm-2 m-2" *ngFor="let form of item.controls | keyvalue" >
+                    <label class="text-smd">{{form.key}}</label>
+                    <input class="form-control" placeholder="Item name"
+                        formControlName="{{form.key}}">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <h2>Pivotal</h2>
+    <form [formGroup]="pivotalForm">
+        <div formArrayName="pivotalFormArray"
+            *ngFor="let item of pivotalForm.get('pivotalFormArray')['controls']; let i = index;">
+            <div [formGroupName]="i" class="row my-5">
+                <div class="col-sm-2 m-2" *ngFor="let form of item.controls | keyvalue" >
+                    <label class="text-smd">{{form.key}}</label>
+                    <input class="form-control" placeholder="Item name"
+                        formControlName="{{form.key}}">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <h2>Paysprint</h2>
+    <form [formGroup]="paysprintForm">
+        <div formArrayName="paysprintFormArray"
+            *ngFor="let item of paysprintForm.get('paysprintFormArray')['controls']; let i = index;">
+            <div [formGroupName]="i" class="row my-5">
+                <div class="col-sm-2 m-2" *ngFor="let form of item.controls | keyvalue" >
+                    <label class="text-smd">{{form.key}}</label>
+                    <input class="form-control" placeholder="Item name"
+                        formControlName="{{form.key}}">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -10,8 +10,6 @@ export class MyInterceptor implements HttpInterceptor {
       headers: req.headers.set('Authkey', 'test-angular-2021')
     });
 
-    console.log('Intercepted HTTP call', authReq);
-
     return next.handle(authReq);
   }
 }
