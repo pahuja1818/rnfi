@@ -1,3 +1,14 @@
+Requirements ---------
+
+1. NPM
+2. Angular
+
+Steps to run----
+
+1. Clone the repo.
+2. Run "npm install" to install the required packages
+3. Run "ng serve" to start the app on localhost
+
 # Rnfi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
