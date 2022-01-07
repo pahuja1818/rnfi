@@ -83,4 +83,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  logout(){
+    window.localStorage.clear();
+    window.location.reload();
+  }
+
 }

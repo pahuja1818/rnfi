@@ -1,5 +1,5 @@
 <div class="p-4">
-
+    <h4 class="text-grey text-bold text-right text-link" (click)="logout()">LOGOUT</h4>
     <h1 class="text-violet text-center p-3">DASHBOARD</h1>
     <h2>RNFI</h2>
     <form [formGroup]="rnfiForm">
@@ -43,3 +43,5 @@
         </div>
     </form>
 </div>
+
+<progress-spinner [visibility]="isServiceRunning"></progress-spinner>
