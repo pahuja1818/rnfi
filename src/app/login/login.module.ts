@@ -10,6 +10,7 @@ import { LoginRoutingModule } from './login-routing.module';
     LoginComponent
   ],
   imports: [
+    CommonModule,
     SharedModule,
     LoginRoutingModule
   ]
